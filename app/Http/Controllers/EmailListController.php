@@ -4,25 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\EmailList;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class EmailListController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         return view('email-list.index',[
-            "emailLists" => EmailList::query()->paginate(),
+            "emailLists" => EmailList::query()->paginate(10),
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($createStage): View
     {
-        //
+        if(!$createStage){
+            return view('email-list.create'
+            );
+        }
+
+
     }
 
     /**

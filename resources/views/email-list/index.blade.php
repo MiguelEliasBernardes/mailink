@@ -1,11 +1,5 @@
 <x-app-layout>
 
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __("Email List") }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm::px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -17,12 +11,20 @@
 
                     @empty
 
-                        <div class="flex justify-center">
-                            <x-link-button :href="route('email-list.create')">
+                        <div class="flex flex-col gap-10 justify-center items-center">
 
-                        { __("Create your firts email list") }
+                            <x-card-skeleton>
+                            </x-card-skeleton>
 
-                            </x-link-button>
+                            <div class="flex flex-col gap-4">
+                                <p class="font-inter">Nenhuma lista cadastrada.</p>
+
+                                <x-link-button :href="route('email-list.create')">
+                                    {{ __("Criar Lista") }}
+                                </x-link-button>
+                            </div>
+
+
                         </div>
 
 
