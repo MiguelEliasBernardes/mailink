@@ -13,9 +13,10 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                inter: ['Inter', 'sans-serif'],
             },
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, require('daisyui')]
 };
