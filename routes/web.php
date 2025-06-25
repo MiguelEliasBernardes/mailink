@@ -18,10 +18,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/lists', [EmailListController::class, 'index'])->name('email-list.index');
-    Route::post('/lists', [EmailListController::class. 'create'])->name('email-list.create');
+    Route::get('/lists/create', [EmailListController::class, 'create'])->name('email-list.create');
 
 
-    Route::resource('mail-templates', MailTemplates::class);
+    Route::resource('email-templates', MailTemplates::class);
 
 });
 

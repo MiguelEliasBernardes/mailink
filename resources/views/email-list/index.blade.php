@@ -20,7 +20,7 @@
                                 <p class="font-inter">Nenhuma lista cadastrada.</p>
 
                                 <x-link-button :href="route('email-list.create')">
-                                    {{ __("Criar Lista") }}
+                                    {{ "Criar Lista" }}
                                 </x-link-button>
                             </div>
 

@@ -20,7 +20,7 @@
                         {{ __('Listas') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('mail-templates.index')" :active="request()->routeIs('mail-templates.index')">
+                    <x-nav-link :href="route('email-templates.index')" :active="request()->routeIs('email-templates.index')">
                         {{ __('Templates') }}
                     </x-nav-link>
                 </div>

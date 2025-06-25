@@ -21,14 +21,9 @@ class EmailListController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($createStage): View
+    public function create(): View
     {
-        if(!$createStage){
-            return view('email-list.create'
-            );
-        }
-
-
+            return view('email-list.create');
     }
 
     /**
