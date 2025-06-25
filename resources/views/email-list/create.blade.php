@@ -10,25 +10,33 @@
                         ['name' => 'Criar Lista']
                     ]"/>
 
-                <div class="w-3/4">
-                    <h3>Lista</h3>
-                    <x-simple-text-input placeholder="Escolha um nome para a sua lista" />
-                </div>
+                <x-form action="{{route('email-list.store')}}" post>
 
-                <div class="w-3/4">
-                    <h3>Lista de emails</h3>
-                    <input type="file" class="file-input w-full" />
-                </div>
+                    <div class="w-3/4">
+                        <h3>Lista</h3>
+                        @if ($errors->any())
+                            {{ dd($errors) }}
+                        @endif
 
-                <div class="w-3/4 flex justify-end gap-5">
-                    <x-secondary-button >
-                        Voltar
-                    </x-secondary-button>
+                        <x-simple-text-input name="name" placeholder="Escolha um nome para a sua lista" />
+                    </div>
 
-                    <x-primary-button >
-                        Salvar
-                    </x-primary-button>
-                </div>
+                    <div class="w-3/4 mt-4">
+                        <h3>Lista de emails</h3>
+                        <input name="csv" type="file" class="file-input w-full" />
+                    </div>
+
+                    <div class="w-3/4 flex justify-end gap-5 mt-6">
+                        <x-secondary-button >
+                            Voltar
+                        </x-secondary-button>
+
+                        <x-primary-button >
+                            Salvar
+                        </x-primary-button>
+                    </div>
+
+                </x-form>
 
             </div>
         </div>

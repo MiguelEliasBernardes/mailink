@@ -19,9 +19,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/lists', [EmailListController::class, 'index'])->name('email-list.index');
     Route::get('/lists/create', [EmailListController::class, 'create'])->name('email-list.create');
+    Route::post('/lists/create', [EmailListController::class, 'store'])->name('email-list.store');
 
 
-    Route::resource('email-templates', MailTemplates::class);
+    Route::resource(name: 'email-templates', controller: MailTemplates::class);
 
 });
 
