@@ -37,10 +37,12 @@ class EmailListController extends Controller
     {
         $csv = $request->file('csv');
 
+        $emailList = null;
+
         $dataCsv = EmailUserListController::csv_formater($csv);
 
         try {
-                DB::transaction(function () use($request, $dataCsv) {
+                DB::transaction(function () use($request, $dataCsv, &$emailList) {
 
                     $emailList = EmailList::create($request->only(['name', 'csv']) );
 
@@ -48,11 +50,11 @@ class EmailListController extends Controller
 
                 });
 
-                return redirect()->route('email-list.index', ["status" => "sucess", "message" => "Sucesso ao criar lista", "process" => "created"]);
+                return redirect()->route('customer-email.index')->with(["status" => "sucess", "message" => "Sucesso ao criar lista", "customers-id" => $emailList->id]);
 
         } catch (\Throwable $th) {
 
-            return redirect()->route('email-list.index', ["status" => "error", "message" => "Erro ao salvar emails"]);
+            return redirect()->route('customer-email.index')->with( ["status" => "error", "message" => "Erro ao salvar emails"]);
         }
 
 

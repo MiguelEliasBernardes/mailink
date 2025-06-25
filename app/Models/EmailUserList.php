@@ -12,5 +12,10 @@ class EmailUserList extends Model
         'email_list_id'
     ];
 
+    public function scopeUsersByList($query, $id)
+    {
+        return $query->where('email_list_id', $id);
+    }
+
 
 }

@@ -1,1 +1,1 @@
-<input type="text" class="input w-full" {{ $attributes }} />
+<input type="text"  {{ $attributes->class("input w-full") }} />

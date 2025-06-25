@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmailListController;
+use App\Http\Controllers\EmailUserListController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/lists/create', [EmailListController::class, 'create'])->name('email-list.create');
     Route::post('/lists/create', [EmailListController::class, 'store'])->name('email-list.store');
 
+    Route::get('/customers', [EmailUserListController::class, 'index'])->name('customer-email.index');
 
     Route::resource(name: 'email-templates', controller: MailTemplates::class);
 

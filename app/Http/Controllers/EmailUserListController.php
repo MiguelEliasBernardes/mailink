@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmailUserList;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Storage;
 
 class EmailUserListController extends Controller
@@ -30,6 +32,14 @@ class EmailUserListController extends Controller
             "error" => "Não foi possível ler o arquivo."
         ];
 
+    }
+
+    public function index(): View
+    {
+
+        $customers = EmailUserList::usersByList(session("customers-id"))->paginate(6);
+
+        return view('email-list.users-email', compact('customers'));
     }
 
 
