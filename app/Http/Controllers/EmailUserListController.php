@@ -34,12 +34,13 @@ class EmailUserListController extends Controller
 
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
+        $list = $request->query('email_list_id', session('customers-id'));
 
-        $customers = EmailUserList::usersByList(session("customers-id"))->paginate(6);
+        $customers = EmailUserList::usersByList($list)->paginate(6);
 
-        return view('email-list.users-email', compact('customers'));
+        return view('email-list.users-email', compact('customers', 'list'));
     }
 
 

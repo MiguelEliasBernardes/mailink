@@ -50,7 +50,7 @@
                     </div>
 
                     <div>
-                        {{ $customers->links() }}
+                        {{ $customers->appends(['email_list_id' => $list])->links() }}
                     </div>
 
 
