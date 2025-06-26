@@ -66,17 +66,40 @@ class EmailUserListController extends Controller
 
     public function show(int $id): JsonResponse
     {
+
         $customer = EmailUserList::findOrFail($id);
 
         return response()->json($customer);
 
     }
 
-    public function update(EmailUserRequest $request)
+    public function update(EmailUserRequest $request): RedirectResponse
     {
-        $customer = EmailUserList::where('id','=',$request->user_id)->update($request->only(['name','email','email_list_id']));
+        try {
+            $customer = EmailUserList::where('id','=',$request->user_id)->update($request->only(['name','email','email_list_id']));
 
-        return redirect()->route('customer-email.index', ["email_list_id" =>$request['email_list_id'], "message" => "Sucesso ao atualizar cliente", "status" => "sucess"]);
+            return redirect()->route('customer-email.index', ["email_list_id" =>$request['email_list_id'], "message" => "Sucesso ao atualizar cliente", "status" => "sucess"]);
+
+        } catch (\Throwable $th) {
+
+            return redirect()->route('customer-email.index', ["email_list_id" =>request('email_list_id'), "message" => "erro ao atualizar cliente", "status" => "error"]);
+
+        }
+
+
+
+    }
+
+    public function destroy(int $id)
+    {
+        try {
+            $customer = EmailUserList::destroy($id);
+
+            return redirect()->route('customer-email.index', ["email_list_id" =>request('email_list_id'), "message" => "Sucesso ao excluir cliente", "status" => "success"]);
+
+        } catch (\Throwable $th) {
+            return redirect()->route('customer-email.index', ["email_list_id" =>request('email_list_id'), "message" => "Erro ao excluir cliente", "status" => "error"]);
+        }
 
     }
 

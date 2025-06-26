@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/customer/create', [EmailUserListController::class, 'store'])->name('customer-email.store');
     Route::get('/customer/{id}', [EmailUserListController::class, 'show'])->name('customer-email.show');
     Route::post('/customer', [EmailUserListController::class, 'update'])->name('customer-email.update');
+    Route::delete('/customer/{id}', [EmailUserListController::class, 'destroy'])->name('customer-email.destroy');
 
     Route::resource(name: 'email-templates', controller: MailTemplates::class);
 
