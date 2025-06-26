@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EmailUserRequest;
 use App\Models\EmailUserList;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Storage;
@@ -45,7 +47,7 @@ class EmailUserListController extends Controller
     }
 
 
-    public function store(EmailUserRequest $request)
+    public function store(EmailUserRequest $request): RedirectResponse
     {
         try {
 
@@ -62,11 +64,19 @@ class EmailUserListController extends Controller
     }
 
 
-    public function show(int $id)
+    public function show(int $id): JsonResponse
     {
         $customer = EmailUserList::findOrFail($id);
 
         return response()->json($customer);
+
+    }
+
+    public function update(EmailUserRequest $request)
+    {
+        $customer = EmailUserList::where('id','=',$request->user_id)->update($request->only(['name','email','email_list_id']));
+
+        return redirect()->route('customer-email.index', ["email_list_id" =>$request['email_list_id'], "message" => "Sucesso ao atualizar cliente", "status" => "sucess"]);
 
     }
 
