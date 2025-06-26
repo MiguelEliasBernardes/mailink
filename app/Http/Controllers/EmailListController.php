@@ -16,7 +16,7 @@ class EmailListController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index($search = null): View
     {
         return view(view: 'email-list.index',data: [
             "emailLists" => EmailList::query()->paginate(10),
@@ -67,35 +67,4 @@ class EmailListController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(EmailList $emailList)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(EmailList $emailList)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, EmailList $emailList)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(EmailList $emailList)
-    {
-        //
-    }
 }

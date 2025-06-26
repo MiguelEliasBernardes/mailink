@@ -19,12 +19,16 @@
 
                 <section class="w-3/4 flex flex-col gap-10">
 
-                    <div class="flex justify-between">
+                    <div class=" flex justify-between">
                         <x-link-button  class="w-2/5 btn" onclick="document.getElementById('create-customer').showModal()">
                             Adicionar Email
                         </x-link-button>
 
-                        <x-simple-text-input placeholder="Pesquisar" class="w-3/6"  />
+                        <x-form :class="'!items-end'" :action="route('customer-email.index')" get>
+                            <input type="hidden" name="email_list_id" value="{{ $list_id }}">
+                            <x-simple-text-input placeholder="Pesquisar" class="w-10/12 " name="search" />
+                        </x-form>
+
                     </div>
 
                     <div>
@@ -82,7 +86,7 @@
 
         </x-modal-dialog>
 
-        <x-modal-dialog id="edit-customer" >
+        <x-modal-dialog id="edit-customer">
 
             @include('email-customers.edit-customer', ["email_list_id" => $list_id])
 

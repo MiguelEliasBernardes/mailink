@@ -41,9 +41,17 @@ class EmailUserListController extends Controller
     {
         $list_id = $request->query('email_list_id', $request->query('customers-id'));
 
-        $customers = EmailUserList::usersByList($list_id)->paginate(6);
+        if($request->search == null)
+        {
+            $customers = EmailUserList::usersByList($list_id)->paginate(6);
+
+            return view('email-customers.users-email', compact('customers', 'list_id'));
+        }
+
+        $customers = EmailUserList::customersSearch($request->search, $list_id)->paginate(6);
 
         return view('email-customers.users-email', compact('customers', 'list_id'));
+
     }
 
 

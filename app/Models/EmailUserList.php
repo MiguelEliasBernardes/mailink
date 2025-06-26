@@ -17,5 +17,10 @@ class EmailUserList extends Model
         return $query->where('email_list_id', $id);
     }
 
-
+    public function scopeCustomersSearch($query, $search,$list_id)
+    {
+        return $query
+        ->where('name', 'like', '%' . $search . '%')
+        ->where('email_list_id', '=' , $list_id);
+    }
 }

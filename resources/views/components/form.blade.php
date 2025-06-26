@@ -11,7 +11,7 @@
 
 @endphp
 
-<form {{ $attributes->class(["w-full flex flex-col justify-center items-center py-8"]) }} enctype="multipart/form-data" method="{{ $method }}">
+<form {{ $attributes->class(["w-full flex flex-col justify-center items-center"]) }} enctype="multipart/form-data" method="{{ $method }}">
 
     @if ($method != 'GET')
         @csrf
