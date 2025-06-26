@@ -14,9 +14,6 @@
 
                     <div class="w-3/4">
                         <h3>Lista</h3>
-                        @if ($errors->any())
-                            {{ dd($errors) }}
-                        @endif
 
                         <x-simple-text-input name="name" placeholder="Escolha um nome para a sua lista" />
                     </div>
