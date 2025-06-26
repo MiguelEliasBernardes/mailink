@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\UploadedFile;
+use function PHPUnit\Framework\isNull;
 
 class EmailListController extends Controller
 {
@@ -37,11 +38,12 @@ class EmailListController extends Controller
     {
         $csv = $request->file('csv');
 
-        $emailList = null;
+        if($csv){
+            $emailList = null;
 
-        $dataCsv = EmailUserListController::csv_formater($csv);
+            $dataCsv = EmailUserListController::csv_formater($csv);
 
-        try {
+            try {
                 DB::transaction(function () use($request, $dataCsv, &$emailList) {
 
                     $emailList = EmailList::create($request->only(['name', 'csv']) );
@@ -50,16 +52,18 @@ class EmailListController extends Controller
 
                 });
 
-                return redirect()->route('customer-email.index')->with(["status" => "sucess", "message" => "Sucesso ao criar lista", "customers-id" => $emailList->id]);
+                return redirect()->route('customer-email.index', ["status" => "sucess", "message" => "Sucesso ao criar lista", "customers-id" => $emailList->id]);
 
-        } catch (\Throwable $th) {
+            } catch (\Throwable $th) {
 
-            return redirect()->route('customer-email.index')->with( ["status" => "error", "message" => "Erro ao salvar emails"]);
+                return redirect()->route('customer-email.index', ["status" => "error", "message" => "Erro ao salvar emails"]);
+            }
+
         }
 
+        $emailList = EmailList::create($request->only(['name']));
 
-
-
+        return redirect()->route('customer-email.index', ["status" => "sucess", "message" => "Sucesso ao criar lista", "customers-id" => $emailList->id]);
 
     }
 
