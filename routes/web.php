@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.register');
 });
 
 Route::get('/dashboard', function () {
@@ -22,7 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/lists/create', [EmailListController::class, 'create'])->name('email-list.create');
     Route::post('/lists/create', [EmailListController::class, 'store'])->name('email-list.store');
 
-    Route::get('/customers', [EmailUserListController::class, 'index'])->name('customer-email.index');
+    Route::get('/customer', [EmailUserListController::class, 'index'])->name('customer-email.index');
+    Route::post('/customer/create', [EmailUserListController::class, 'store'])->name('customer-email.store');
+    Route::get('/customer/{id}', [EmailUserListController::class, 'show'])->name('customer-email.show');
+    Route::post('/customer', [EmailUserListController::class, 'update'])->name('customer-email.update');
 
     Route::resource(name: 'email-templates', controller: MailTemplates::class);
 
