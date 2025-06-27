@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="w-3/4 flex justify-end gap-5 mt-6">
-                        <x-secondary-button >
+                        <x-secondary-button :href="route('email-list.index')">
                             Voltar
                         </x-secondary-button>
 

@@ -20,13 +20,13 @@
                 <section class="w-3/4 flex flex-col gap-10">
 
                     <div class=" flex justify-between">
-                        <x-link-button  class="w-2/5 btn" onclick="document.getElementById('create-customer').showModal()">
+                        <x-link-button  class="w-2/6 btn" onclick="document.getElementById('create-customer').showModal()">
                             Adicionar Email
                         </x-link-button>
 
                         <x-form :class="'!items-end'" :action="route('customer-email.index')" get>
                             <input type="hidden" name="email_list_id" value="{{ $list_id }}">
-                            <x-simple-text-input placeholder="Pesquisar" class="w-10/12 " name="search" />
+                            <x-simple-text-input placeholder="Pesquisar" class="w-8/12 " name="search" />
                         </x-form>
 
                     </div>
