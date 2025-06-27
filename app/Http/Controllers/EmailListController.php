@@ -16,11 +16,24 @@ class EmailListController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($search = null): View
+    public function index(Request $request): View
     {
+
+        if($request->search == null)
+        {
+            return view(view: 'email-list.index',data: [
+                "emailLists" => EmailList::withCount('email_users')->paginate(6),
+            ]);
+        }
+
         return view(view: 'email-list.index',data: [
-            "emailLists" => EmailList::withCount('email_users')->paginate(6),
+            "emailLists" => EmailList::withCount('email_users')
+                            ->where('name', 'like', '%' . $request->search . '%')
+                            ->paginate(6),
         ]);
+
+
+
     }
 
     /**
@@ -78,8 +91,6 @@ class EmailListController extends Controller
 
             return redirect()->route('email-list.index', ["status" => "error", "message" => "Falha ao deletar lista."]);
         }
-
-
     }
 
 }
