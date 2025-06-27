@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/lists', [EmailListController::class, 'index'])->name('email-list.index');
     Route::get('/lists/create', [EmailListController::class, 'create'])->name('email-list.create');
     Route::post('/lists/create', [EmailListController::class, 'store'])->name('email-list.store');
+    Route::delete('/lists/{id}', [EmailListController::class, 'destroy'])->name('email-list.destroy');
 
     Route::get('/customer', [EmailUserListController::class, 'index'])->name('customer-email.index');
     Route::post('/customer/create', [EmailUserListController::class, 'store'])->name('customer-email.store');

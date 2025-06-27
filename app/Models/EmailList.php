@@ -14,7 +14,7 @@ class EmailList extends Model
 
     public function email_users(): HasMany
     {
-        return $this->hasMany(EmailUserList::class);
+        return $this->hasMany(EmailUserList::class, 'email_list_id');
     }
 
 }

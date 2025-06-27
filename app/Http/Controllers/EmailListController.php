@@ -19,7 +19,7 @@ class EmailListController extends Controller
     public function index($search = null): View
     {
         return view(view: 'email-list.index',data: [
-            "emailLists" => EmailList::query()->paginate(10),
+            "emailLists" => EmailList::withCount('email_users')->paginate(6),
         ]);
     }
 
@@ -52,7 +52,7 @@ class EmailListController extends Controller
 
                 });
 
-                return redirect()->route('customer-email.index', ["status" => "sucess", "message" => "Sucesso ao criar lista", "customers-id" => $emailList->id]);
+                return redirect()->route('customer-email.index', ["status" => "success", "message" => "Sucesso ao criar lista", "email_list_id" => $emailList->id]);
 
             } catch (\Throwable $th) {
 
@@ -63,7 +63,22 @@ class EmailListController extends Controller
 
         $emailList = EmailList::create($request->only(['name']));
 
-        return redirect()->route('customer-email.index', ["status" => "sucess", "message" => "Sucesso ao criar lista", "customers-id" => $emailList->id]);
+        return redirect()->route('customer-email.index', ["status" => "success", "message" => "Sucesso ao criar lista", "email_list_id" => $emailList->id]);
+
+    }
+
+    public function destroy(int $id)
+    {
+        try {
+            $list = EmailList::destroy($id);
+
+            return redirect()->route('email-list.index', ["status" => "success", "message" => "Lista deletada com sucesso."]);
+
+        } catch (\Throwable $th) {
+
+            return redirect()->route('email-list.index', ["status" => "error", "message" => "Falha ao deletar lista."]);
+        }
+
 
     }
 
