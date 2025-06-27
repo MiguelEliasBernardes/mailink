@@ -39,7 +39,8 @@ class EmailUserListController extends Controller
 
     public function index(Request $request): View
     {
-        $list_id = $request->query('email_list_id', $request->query('customers-id'));
+
+        $list_id = $request->query('email_list_id', $request->query('list_id'));
 
         if($request->search == null)
         {
@@ -86,7 +87,7 @@ class EmailUserListController extends Controller
         try {
             $customer = EmailUserList::where('id','=',$request->user_id)->update($request->only(['name','email','email_list_id']));
 
-            return redirect()->route('customer-email.index', ["email_list_id" =>$request['email_list_id'], "message" => "Sucesso ao atualizar cliente", "status" => "sucess"]);
+            return redirect()->route('customer-email.index', ["email_list_id" =>$request['email_list_id'], "message" => "Sucesso ao atualizar cliente", "status" => "success"]);
 
         } catch (\Throwable $th) {
 
