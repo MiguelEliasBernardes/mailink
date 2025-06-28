@@ -16,7 +16,7 @@
                         </x-link-button>
 
                         <x-form :class="'!items-end'" :action="route('email-list.index')" get>
-                            <x-simple-text-input placeholder="Pesquisar" class="w-8/12 " name="search" />
+                            <x-simple-text-input placeholder="Pesquisar" class="w-2/3 " name="search" />
                         </x-form>
 
                     </div>
@@ -63,11 +63,7 @@
                                 </x-card-skeleton>
 
                                 <div class="flex flex-col gap-4">
-                                    <p class="font-inter">Nenhuma lista cadastrada.</p>
-
-                                    <x-link-button :href="route('email-list.create')">
-                                        {{ "Criar Lista" }}
-                                    </x-link-button>
+                                    <p class="font-inter mb-8 font-medium text-base">Nenhuma lista cadastrada.</p>
                                 </div>
                             </div>
                         @endforelse

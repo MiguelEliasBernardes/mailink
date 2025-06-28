@@ -26,7 +26,7 @@
 
                         <x-form :class="'!items-end'" :action="route('customer-email.index')" get>
                             <input type="hidden" name="email_list_id" value="{{ $list_id }}">
-                            <x-simple-text-input placeholder="Pesquisar" class="w-8/12 " name="search" />
+                            <x-simple-text-input placeholder="Pesquisar" class="w-2/3 " name="search" />
                         </x-form>
 
                     </div>
