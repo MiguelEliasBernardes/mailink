@@ -3,6 +3,7 @@
 use App\Http\Controllers\EmailListController;
 use App\Http\Controllers\EmailUserListController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/customer', [EmailUserListController::class, 'update'])->name('customer-email.update');
     Route::delete('/customer/{id}', [EmailUserListController::class, 'destroy'])->name('customer-email.destroy');
 
-    Route::resource(name: 'email-templates', controller: MailTemplates::class);
+    Route::resource('email-templates',  TemplateController::class);
 
 });
 
