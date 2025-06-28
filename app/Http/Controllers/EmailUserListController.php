@@ -76,9 +76,17 @@ class EmailUserListController extends Controller
     public function show(int $id): JsonResponse
     {
 
-        $customer = EmailUserList::findOrFail($id);
+        try {
+            $customer = EmailUserList::findOrFail($id);
 
-        return response()->json($customer);
+            return response()->json($customer);
+        } catch (\Throwable $th) {
+
+            return response()->json(['status' => 'error','message' => 'Não foi possível localizar o cliente']);
+
+        }
+
+
 
     }
 

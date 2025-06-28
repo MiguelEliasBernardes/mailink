@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/customer', [EmailUserListController::class, 'update'])->name('customer-email.update');
     Route::delete('/customer/{id}', [EmailUserListController::class, 'destroy'])->name('customer-email.destroy');
 
-    Route::resource('email-templates',  TemplateController::class);
+    Route::resource('templates',  TemplateController::class);
 
 });
 
