@@ -30,7 +30,6 @@
                         <li class="list-row flex justify-between">
                                 <div>
                                     <div>{{ $template['name'] }}</div>
-                                    <div class="text-xs uppercase font-semibold opacity-60">{{ $template['email_users_count'] }} E-mails cadastrados</div>
                                 </div>
 
                                 <div class="flex">
