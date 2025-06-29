@@ -44,7 +44,7 @@ class TemplateController extends Controller
         try {
             $template = Template::findOrFail($id);
 
-            return response()->json($template);
+            return view('templates.edit', compact('id','template'));
         } catch (\Throwable $th) {
             return response()->json(['status' => 'error', 'message' => 'Não foi possível localizar o template.']);
         }
@@ -52,11 +52,12 @@ class TemplateController extends Controller
 
     }
 
-    public function update(TemplateRequest $request)
+    public function update(TemplateRequest $request, int $id)
     {
 
         try {
-            $template = Template::where('id','=', $request->id)->update();
+
+            $template = Template::where('id','=', $id)->update($request->only([ 'name','content']));
 
             return redirect()->route('templates.index', ['status' => 'success', 'message' => 'Template Editado com Sucesso']);
         } catch (\Throwable $th) {

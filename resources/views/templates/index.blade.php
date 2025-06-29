@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="py-12 " x-data="customerModal()" x-init="init()">
+    <div class="py-12 ">
         <div class="max-w-7xl mx-auto sm::px-6 lg:px-8">
             <div class="bg-white w-3/4 mx-auto  dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
@@ -34,11 +34,13 @@
                                 </div>
 
                                 <div class="flex">
-                                    <button class="btn btn-square btn-ghost" x-on:click="openEditModal({{ $template['id'] }})">
-                                        <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
-                                        </svg>
-                                    </button>
+                                    <x-form :action="route('templates.show' , $template['id'])" get>
+                                        <button class="btn btn-square btn-ghost">
+                                            <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+                                            </svg>
+                                        </button>
+                                    </x-form>
 
                                     <x-form :action="route('templates.destroy', $template['id'])" delete class=" py-0" onsubmit="return(confirm('Tem certeza que deseja excluir?'))">
                                         <button class="btn btn-square btn-ghost btn-error" >
@@ -69,41 +71,9 @@
                         {{ $templates->links() }}
                     </div>
 
-                    <x-modal-dialog id="edit-template">
-
-                        @include('templates.edit')
-
-                    </x-modal-dialog>
                 </div>
             </div>
         </div>
     </div>
 
 </x-app-layout>
-
-
-<script>
-    function customerModal() {
-        return {
-            template: { name: '', content: '', id: null },
-            async openEditModal(id) {
-                try {
-                    const res = await fetch(`/templates/${id}`);
-                    const data = await res.json();
-                    this.template = data;
-                    console.log(data)
-
-                    document.getElementById('edit-name').value = data.name;
-                    document.getElementById('edit-content').innerHTML = data.content;
-                    document.getElementById('form-template').action = `/templates/${data.id}`;
-
-                    document.getElementById('edit-template').showModal();
-                } catch (e) {
-                    console.error('Erro ao buscar template:', e);
-                }
-            },
-            init() {}
-        }
-    }
-</script>
-
