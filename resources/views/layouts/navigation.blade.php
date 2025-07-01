@@ -5,14 +5,14 @@
             <div class="flex gap-10">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('campanhas') }}">
+                    <a href="{{ route('campaigns.index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('campanhas')" :active="request()->routeIs('campanhas')">
+                    <x-nav-link :href="route('campaigns.index')" :active="request()->routeIs('campaigns.index')">
                         {{ __('Campanhas') }}
                     </x-nav-link>
 
@@ -75,12 +75,16 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('campanhas')" :active="request()->routeIs('campanhas')">
+            <x-responsive-nav-link :href="route('campaigns.index')" :active="request()->routeIs('campaigns.index')">
                 {{ __('Campanhas') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('email-list.index')" :active="request()->routeIs('email-list.index')">
                 {{ __('Email List') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('templates.index')" :active="request()->routeIs('templates.index')">
+                {{ __('Templates') }}
             </x-responsive-nav-link>
         </div>
 
