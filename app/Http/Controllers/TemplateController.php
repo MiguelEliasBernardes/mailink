@@ -39,7 +39,7 @@ class TemplateController extends Controller
 
     }
 
-    public function show(int $id)
+    public function edit(int $id)
     {
         try {
             $template = Template::findOrFail($id);
@@ -65,6 +65,14 @@ class TemplateController extends Controller
         }
 
 
+
+    }
+
+    public function show(int $id)
+    {
+        return view('templates.show', [
+            "template" => Template::findOrFail($id)
+        ]);
 
     }
 
