@@ -23,4 +23,9 @@ class EmailUserList extends Model
         ->where('name', 'like', '%' . $search . '%')
         ->where('email_list_id', '=' , $list_id);
     }
+
+    public function campaign()
+    {
+        return $this->belongsTo(Campaigns::class);
+    }
 }
