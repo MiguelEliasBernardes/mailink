@@ -8,7 +8,7 @@ use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.register');
+    return view('welcome');
 });
 
 Route::middleware('auth')->group(function () {

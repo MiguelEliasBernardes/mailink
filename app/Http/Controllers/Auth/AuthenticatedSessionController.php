@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('campanhas', absolute: false));
+        return redirect()->intended(route('campaigns.index', absolute: false));
     }
 
     /**
