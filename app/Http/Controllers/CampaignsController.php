@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CampaignsRequest;
 use App\Models\Campaigns;
 use App\Models\EmailList;
 use App\Models\Template;
@@ -33,8 +34,12 @@ class CampaignsController extends Controller
     }
 
 
-    public function store(int $id)
+    public function store(CampaignsRequest $request)
     {
+
+        Campaigns::create($request->only('name','subject','email_list_id','template_id'));
+
+        return view('campaigns.template',['status' => 'success', 'message' => 'Campanha criada com sucesso!', 'templates' => Template::findOrFail($request->template_id) ]);
 
     }
 

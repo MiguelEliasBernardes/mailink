@@ -1,14 +1,15 @@
 <x-app-layout>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm::px-6 lg:px-8">
-            <div class="bg-white w-2/4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
+        <div class="max-w-7xl mx-auto sm::px-6 lg:px-8 flex flex-col items-center">
 
-                <x-breadcrumbs
+            <x-breadcrumbs
                     :links="[
                         ['name' => 'Campanhas', 'url' => route('campaigns.index')],
                         ['name' => 'Criar Campanha']
                     ]"/>
+
+            <div class="bg-white w-2/4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
 
                 <x-form action="{{route('campaigns.store')}}" post>
 
@@ -27,20 +28,29 @@
                     <div class="w-3/4 mt-4">
                         <h3>Selecione uma lista</h3>
 
-                        <x-dropdown-basic :itens=" $email_lists" />
+                        <x-dropdown-basic :name="'email_list_id'" :itens=" $email_lists" />
                     </div>
 
                     <div class="w-3/4 mt-4">
                         <h3>Selecione um template</h3>
 
-                        <x-dropdown-basic :itens=" $templates" />
+                        <x-dropdown-basic :name="'template_id'" :itens=" $templates" />
                     </div>
 
                     <div class="w-3/4 mt-4">
                         <h3>Rastrear email quando:</h3>
 
-                        <input type="checkbox" name="link-verified"  />
-                        <input type="checkbox" name="email-verified"  />
+                        <div class="flex flex-col gap-3 mt-2">
+                            <label for="link-verified">
+                                <input type="checkbox" checked="checked" class="checkbox bg-gray-800" name="link-verified"  />
+                                Alguém clicar em algum link
+                            </label>
+
+                            <label for="email-verified">
+                                <input type="checkbox" checked="checked" class="checkbox bg-gray-800" name="email-verified"  />
+                                Alguém abrir o e-mail
+                            </label>
+                        </div>
 
                     </div>
 

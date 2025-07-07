@@ -12,10 +12,8 @@
                 </div>
 
 
-                <div class="min-h-52 m-10 w-11/12 px-6 border-2 py-4 rounded-lg">
-
-                    {!! $template->content !!}
-
+                <div class="min-h-52 m-10 w-11/12 px-6 border-2 py-4 rounded-lg ">
+                        {!! $template->content !!}
                 </div>
 
             </div>

@@ -1,7 +1,7 @@
-@props(['itens' => []])
+@props(['itens' => [], 'name' => '' ])
 
 
-<select class="select w-full">
+<select name="{{ $name }}" class="select w-full">
     <option disabled selected>Selecione uma Lista de clientes</option>
 
     @foreach ($itens as $item)

@@ -1,15 +1,16 @@
 <x-app-layout>
 
     <div class="py-12 ">
-        <div class="max-w-7xl mx-auto sm::px-6 lg:px-8">
-            <div class="pt-10 bg-white w-3/4 mx-auto flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="max-w-7xl mx-auto sm::px-6 lg:px-8 flex flex-col items-center">
 
-                <x-breadcrumbs
+            <x-breadcrumbs
                     :links="[
                         ['name' => 'Templates', 'url' => route('templates.index')],
                         ['name' => 'Criar Template', 'url' => route('templates.create')],
                         ['name' => 'Editar Template']
                     ]"/>
+
+            <div class="pt-10 bg-white w-3/4 mx-auto flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
                 <x-form id="form-template" action="{{ route('templates.update', $id) }}" class="mt-10" patch>
 

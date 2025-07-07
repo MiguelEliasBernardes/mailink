@@ -23,7 +23,9 @@ class CampaignsRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'content' => 'required'
+            'subject' => 'required|string',
+            'email_list_id' => 'required|integer',
+            'template_id' => 'required|integer'
         ];
     }
 }

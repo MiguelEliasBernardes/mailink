@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('subject');
-            $table->foreignId('email_list_id')->references('id')->on('email_list');
-            $table->foreignId('template_id')->references('id')->on('template');
+            $table->foreignId('email_list_id')->references('id')->on('email_lists');
+            $table->foreignId('template_id')->references('id')->on('templates');
             $table->timestamps();
         });
     }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Campaigns extends Model
 {
-    protected $fillable = ['name', 'subject'];
+    protected $fillable = ['name', 'subject','email_list_id','template_id'];
 
     public function lists(): HasMany
     {
