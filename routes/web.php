@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('templates',  TemplateController::class);
 
     Route::resource('campaigns', CampaignsController::class);
+    Route::get('/campaigns/delivery/{id}', [CampaignsController::class, 'campaignDelivery'])->name('campaignDelivery');
 
 });
 

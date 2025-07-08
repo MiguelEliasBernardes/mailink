@@ -43,6 +43,9 @@ class CampaignsController extends Controller
 
     }
 
-
+    public function campaignDelivery(int $id)
+    {
+        return view('campaigns.delivery',['template_id' => $id]);
+    }
 
 }
