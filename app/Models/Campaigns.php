@@ -10,15 +10,16 @@ class Campaigns extends Model
 {
     protected $fillable = ['name', 'subject','email_list_id','template_id'];
 
-    public function lists(): BelongsTo
+    public function emailList()
     {
         return $this->belongsTo(EmailList::class);
     }
 
-    public function templates(): HasMany
+    public function template()
     {
-        return $this->hasMany(Template::class);
+        return $this->belongsTo(Template::class);
     }
+
 
 
 }

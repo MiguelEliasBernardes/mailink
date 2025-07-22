@@ -27,7 +27,7 @@
                         Voltar
                     </x-link-button>
 
-                    <x-link-button :href="route('campaignDelivery',[$templates->id])" >
+                    <x-link-button :href="route('campaignDelivery',[$campaign_id])" >
                         Salvar
                     </x-link-button>
                 </div>

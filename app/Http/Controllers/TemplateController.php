@@ -48,8 +48,6 @@ class TemplateController extends Controller
         } catch (\Throwable $th) {
             return response()->json(['status' => 'error', 'message' => 'Não foi possível localizar o template.']);
         }
-
-
     }
 
     public function update(TemplateRequest $request, int $id)

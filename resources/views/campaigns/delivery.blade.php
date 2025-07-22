@@ -30,7 +30,7 @@
                 <div class="w-3/4 ">
                     <p>De: {{config('mail.from.address')}}</p>
                     <p>Para: <span>{{$campaign->emailList->email_users->count()}}</span></p>
-                    <p>Assunto: <span>$campaign->subject</span></p>
+                    <p>Assunto: <span>{{$campaign->subject}}</span></p>
                 </div>
 
                 <div class="w-3/4">
