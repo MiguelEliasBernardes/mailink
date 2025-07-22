@@ -17,7 +17,7 @@
                     <a role="tab" class="tab tab-active">Entrega</a>
                 </div>
 
-                <form action="" class="w-3/4">
+                <form action="{{ route('send.single.mail',[$campaign_id]) }}" class="w-3/4">
                     <label for="emailTest" class="font-inter">Testar a campanha</label>
                     <div class="flex justify-between">
                         <x-text-input class="w-3/4" type="email" name="emailTest" placeholder="Digite o email" />
@@ -28,10 +28,9 @@
                 </form>
 
                 <div class="w-3/4 ">
-                    <p>De: empresa@comercial.com</p>
-                    <p>Para: <span>Quantidade assinantes</span></p>
-                    <p>Assunto: <span>Assunto email</span></p>
-                    <p>Conteúdo: <span>conteudo email</span></p>
+                    <p>De: {{config('mail.from.address')}}</p>
+                    <p>Para: <span>{{$campaign->emailList->email_users->count()}}</span></p>
+                    <p>Assunto: <span>$campaign->subject</span></p>
                 </div>
 
                 <div class="w-3/4">
@@ -43,7 +42,9 @@
                         Voltar
                     </x-link-button>
 
-                    <x-link-button >
+                    <x-link-button :href="route('send.mail',[
+                        $campaign_id
+                    ])" >
                         Disparar Campanha
                     </x-link-button>
                 </div>

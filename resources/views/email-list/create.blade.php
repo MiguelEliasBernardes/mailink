@@ -9,13 +9,7 @@
                         ['name' => 'Criar Lista']
                     ]"/>
 
-            <div class="bg-white w-2/4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
-
-                <x-breadcrumbs
-                    :links="[
-                        ['name' => 'Listas', 'url' => route('email-list.index')],
-                        ['name' => 'Criar Lista']
-                    ]"/>
+            <div class="bg-white w-2/4 mt-4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
 
                 <x-form action="{{route('email-list.store')}}" post>
 

@@ -1,5 +1,6 @@
-{!! $campaign->content !!}
+<x-mail::message>
+{!! $campaign->template->content !!}
 
-Thanks,<br>
+
 {{ config('app.name') }}
 </x-mail::message>

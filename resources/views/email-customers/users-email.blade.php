@@ -8,14 +8,14 @@
                 <x-toast :status="request('status')" :message="request('message')"  />
             @endif
 
-            <div class="bg-white w-3/4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
-
-                <x-breadcrumbs
+            <x-breadcrumbs
                     :links="[
                         ['name' => 'Listas', 'url' => route('email-list.index')],
                         ['name' => 'Criar Lista', 'url' => route('email-list.create')],
                         ['name' => 'Clientes importados']
                     ]"/>
+
+            <div class="bg-white w-3/4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
 
                 <section class="w-3/4 flex flex-col gap-10">
 
