@@ -2,7 +2,7 @@
 
 
     <div class="py-12" x-data="customerModal()" x-init="init()">
-        <div class="max-w-7xl mx-auto sm::px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm::px-6 lg:px-8 flex flex-col items-center">
 
             @if (request('status'))
                 <x-toast :status="request('status')" :message="request('message')"  />
@@ -15,7 +15,7 @@
                         ['name' => 'Clientes importados']
                     ]"/>
 
-            <div class="bg-white w-3/4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
+            <div class="bg-white mt-4 w-3/4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
 
                 <section class="w-3/4 flex flex-col gap-10">
 
@@ -26,7 +26,7 @@
 
                         <x-form :class="'!items-end'" :action="route('customer-email.index')" get>
                             <input type="hidden" name="email_list_id" value="{{ $list_id }}">
-                            <x-simple-text-input placeholder="Pesquisar" class="w-2/3 " name="search" />
+                            <x-simple-text-input placeholder="Pesquisar" class="w-1/2 " name="search" />
                         </x-form>
 
                     </div>
