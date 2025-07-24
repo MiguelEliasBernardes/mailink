@@ -6,7 +6,7 @@ Sistema de envio de e-mails em massa, construído com Laravel. Este projeto tamb
 
 - PHP >= 8.1
 - Composer
-- MySQL ou MariaDB
+- SQLite (já incluído em muitas instalações PHP)
 - Node.js & NPM
 - Docker (opcional, para rodar o Mailpit)
 
@@ -32,15 +32,18 @@ php artisan key:generate
 
 ## 🛠️ Configuração
 
-Edite o arquivo `.env` com as suas credenciais de banco de dados e configurações de e-mail. Exemplo para usar com o Mailpit:
+O projeto usa SQLite como banco de dados por padrão. Para configurá-lo:
+
+```bash
+# Crie o arquivo do banco de dados
+touch database/database.sqlite
+```
+
+Edite o arquivo `.env` para conter:
 
 ```dotenv
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=mailink
-DB_USERNAME=root
-DB_PASSWORD=
+DB_CONNECTION=sqlite
+DB_DATABASE=${DB_DATABASE_PATH}/database.sqlite
 
 MAIL_MAILER=smtp
 MAIL_HOST=127.0.0.1
@@ -50,6 +53,12 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=example@mail.com
 MAIL_FROM_NAME="Mailink"
+```
+
+Certifique-se de que a variável `DB_DATABASE_PATH` esteja definida ou substitua `${DB_DATABASE_PATH}` pelo caminho absoluto, por exemplo:
+
+```dotenv
+DB_DATABASE=/absolute/path/to/project/database/database.sqlite
 ```
 
 ## 🧪 Executando o Projeto
