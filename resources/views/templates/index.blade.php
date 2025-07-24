@@ -15,8 +15,8 @@
                             Criar Template
                         </x-link-button>
 
-                        <x-form :class="'!items-end'" :action="route('templates.index')" get>
-                            <x-simple-text-input placeholder="Pesquisar" class="w-1/2 " name="search" />
+                        <x-form :class="'!items-end !w-1/2'" :action="route('templates.index')" get>
+                            <x-simple-text-input placeholder="Pesquisar" class="w-48 " name="search" />
                         </x-form>
 
                     </div>

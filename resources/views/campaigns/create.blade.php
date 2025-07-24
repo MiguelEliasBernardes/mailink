@@ -9,7 +9,7 @@
                         ['name' => 'Criar Campanha']
                     ]"/>
 
-            <div class="bg-white mt-4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
+            <div class="bg-white mt-4 w-2/4 mx-auto gap-5 flex flex-col justify-center items-center dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-12">
 
                 <div role="tablist" class="tabs tabs-box">
                     <a role="tab" class="tab tab-active">Configurações</a>

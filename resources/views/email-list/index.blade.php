@@ -15,8 +15,8 @@
                             Criar Lista
                         </x-link-button>
 
-                        <x-form :class="'!items-end'" :action="route('email-list.index')" get>
-                            <x-simple-text-input placeholder="Pesquisar" class="w-1/2 " name="search" />
+                        <x-form :class="'!items-end !w-1/2'" :action="route('email-list.index')" get>
+                            <x-simple-text-input placeholder="Pesquisar" class="w-48 " name="search" />
                         </x-form>
 
                     </div>
